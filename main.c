@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include "function.h"
+#include "joueurVJoueur.h"
 
 int main(){
     printf("-----------TicTacToe-----------\n");
@@ -21,6 +22,7 @@ int main(){
 
     if (rep == 1){
         printf("Mode Joueur contre Joueur sélectionné\n");
+        initJvJ();
     } else if (rep == 2){
         printf("Mode Joueur contre ordinateur sélectionné\n");
     } else {
@@ -28,13 +30,6 @@ int main(){
         printf("Entrez le nombre de simulation que vous souhaitez");
         scanf("%d",&rep);
     }
-
-    int table[3][3] = 
-    {
-    { 1 , 2 , 3},
-    { 4 , 5 , 6},
-    { 7 , 8 , 9}
-    };
 
     return 1;
 

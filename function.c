@@ -33,7 +33,7 @@ bool win(int tab[3][3], int joueur)
   //test pour les lignes
   for(int i=0;i<3;i++)
   {
-    if(tab[i][0]==tab[i][1]==tab[i][2]==joueur)
+    if(tab[i][0]==joueur && tab[i][0]==tab[i][1] && tab[i][1]==tab[i][2])
     {
       return true;
     }
@@ -42,18 +42,18 @@ bool win(int tab[3][3], int joueur)
   //test pour les colonnes
   for(int i=0;i<3;i++)
   {
-    if(tab[0][i]==tab[1][i]==tab[2][i]==joueur)
+    if(tab[0][i]==joueur && tab[0][i]==tab[1][i] && tab[1][i]==tab[2][i])
     {
       return true;
     }
   }
   
   //test pour les diagonales
-  if(tab[0][0]==tab[1][1]==tab[2][2]==joueur)
+  if(tab[0][0]==joueur && tab[0][0]==tab[1][1] && tab[1][1]==tab[2][2])
   {
     return true;
   }
-  if(tab[0][2]==tab[1][1]==tab[2][0]==joueur)
+  if(tab[0][2]== joueur && tab[0][2] == tab[1][1] && tab[1][1] == tab[2][0])
   {
     return true;
   }
@@ -79,6 +79,6 @@ bool CheckCoup(int tab[3][3],int valCoup)
   }
   //si le true n'est pas retourné c'est que le nombre n'est pas inclue entre 1 et 9 et/ou qu'il n'est plus disponible dans la matrice
   //on retourne donc false
-  printf("La valeur rentrée n'est pas disponible, veuillez réessayer.");
+  printf("La valeur rentrée n'est pas disponible, veuillez réessayer.\n");
   return false;
 }
