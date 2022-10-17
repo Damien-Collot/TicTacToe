@@ -1,5 +1,6 @@
 #include "function.h"
 #include<stdio.h>
+#include <stdbool.h>
 
 void firstAffiche(int tableau[3][3]){
     for (int i=0;i<3;i++){
@@ -27,7 +28,7 @@ void afficheMatrice(int tableau[3][3]){
     printf("\n");
 }
 
-boolean win(int tab[3][3], int joueur)
+bool win(int tab[3][3], int joueur)
 {
   //test pour les lignes
   for(int i=0;i<3;i++)
