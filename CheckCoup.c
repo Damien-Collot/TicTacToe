@@ -4,9 +4,9 @@ boolean CheckCoup(int tab[3][3],int valCoup)
   if(valCoup>0 && valCoup<10)
   {
     //on parcourt les valeurds 
-    for(int i=0;i<9;i++)
+    for(int i=0;i<3;i++)
     {
-      for(int j=0;j<9;j++)
+      for(int j=0;j<3;j++)
       {
         if(tab[i][j]==valCoup){
           return true;
