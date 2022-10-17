@@ -79,6 +79,6 @@ bool CheckCoup(int tab[3][3],int valCoup)
   }
   //si le true n'est pas retourné c'est que le nombre n'est pas inclue entre 1 et 9 et/ou qu'il n'est plus disponible dans la matrice
   //on retourne donc false
-  printf("La valeur rentrée n'est pas disponible, veuillez réessayer.")
+  printf("La valeur rentrée n'est pas disponible, veuillez réessayer.");
   return false;
 }
