@@ -12,8 +12,9 @@ void initJvJ(){
 
     while (should_run == 1)
     {
-        int isOver = 0;
+        bool isOver = false;
         int countNumber = 0;
+        printf("\nVoici les coups possibles : \n");
         int table[3][3] = 
         {
         { 1 , 2 , 3},
@@ -22,7 +23,7 @@ void initJvJ(){
         };
         firstAffiche(table);
 
-        while (isOver == 0)
+        while (isOver == false)
         {
             if (currentPlayer == 0){
                 printf("Joueur 1 entrez un coup compris entre 1 et 9 et possible\n");
@@ -54,12 +55,17 @@ void initJvJ(){
                     printf("La partie se termine sur un nul\n");
                     draw++;
                 } else {
-                    printf("Le joueur 1 a gagné !!!!\n");
-                    vJ1++;
+                    if (currentPlayer == 0){
+                        printf("Le joueur 1 a gagné !!!!\n");
+                        vJ1++;
+                    } else {
+                        printf("Le joueur 2 a gagné !!!!\n");
+                        vJ2++;
+                    }
                 }
             }
             else if (countNumber > 3){
-                if(win(table,currentPlayer)){
+                if(win(table,currentPlayer) == true){
                     if (currentPlayer == 0){
                         printf("Le joueur 1 a gagné !!!!\n");
                         vJ1++;
@@ -69,12 +75,13 @@ void initJvJ(){
                         vJ2++;
                         isOver = true;
                     }
-                }
-                countNumber++;
-                if (currentPlayer == 0){
-                    currentPlayer = -1;
                 } else {
-                    currentPlayer = 0;
+                    countNumber++;
+                    if (currentPlayer == 0){
+                        currentPlayer = -1;
+                    } else {
+                        currentPlayer = 0;
+                    }
                 }
             } else {
                 if (currentPlayer == 0){
