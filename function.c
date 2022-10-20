@@ -82,3 +82,22 @@ bool CheckCoup(int tab[3][3],int valCoup)
   printf("La valeur rentrée n'est pas disponible, veuillez réessayer.\n");
   return false;
 }
+
+bool CheckCoupComputer(int tab[3][3],int valCoup){
+  if(valCoup>0 && valCoup<10)
+  {
+    //on parcourt les valeurds 
+    for(int i=0;i<3;i++)
+    {
+      for(int j=0;j<3;j++)
+      {
+        if(tab[i][j]==valCoup){
+          return true;
+        }
+      }
+    }
+  }
+  //si le true n'est pas retourné c'est que le nombre n'est pas inclue entre 1 et 9 et/ou qu'il n'est plus disponible dans la matrice
+  //on retourne donc false
+  return false;
+}

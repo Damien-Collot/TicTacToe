@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include "function.h"
 #include "joueurVJoueur.h"
+#include "joueurVComputer.h"
 
 int main(){
     printf("-----------TicTacToe-----------\n");
@@ -25,6 +26,7 @@ int main(){
         initJvJ();
     } else if (rep == 2){
         printf("Mode Joueur contre ordinateur sélectionné\n");
+        initJvC();
     } else {
         printf("Mode ordinateur contre ordinateur sélectionné\n");
         printf("Entrez le nombre de simulation que vous souhaitez");

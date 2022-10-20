@@ -1,13 +1,16 @@
-#include "joueurVJoueur.h"
+#include "joueurVComputer.h"
 #include "function.h"
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-void initJvJ(){
+void initJvC(){
+    srand(time(NULL));
     int currentPlayer = 0;
     int should_run = 1;
-    int vJ1 = 0;
-    int vJ2 = 0;
+    int vJ = 0;
+    int vC = 0;
     int draw = 0;
 
     while (should_run == 1)
@@ -23,18 +26,21 @@ void initJvJ(){
         };
         firstAffiche(table);
 
-        while (isOver == false)
-        {
+        while (isOver == false){
+            int rep;
             if (currentPlayer == 0){
                 printf("Joueur 1 entrez un coup compris entre 1 et 9 et possible\n");
-            } else {
-                printf("Joueur 2 entrez un coup compris entre 1 et 9 et possible\n");
-            }
-            int rep;
-            scanf("%d",&rep);
-            while (CheckCoup(table,rep) != true)
-            {
                 scanf("%d",&rep);
+                while (CheckCoup(table,rep) != true)
+                {
+                    scanf("%d",&rep);
+                }
+            } else {
+                rep = rand() % 9 + 1;
+                while (CheckCoupComputer(table,rep) != true)
+                {
+                    rep = rand() % 9 + 1;
+                }
             }
             for(int i=0;i<3;i++)
             {
@@ -57,10 +63,10 @@ void initJvJ(){
                 } else {
                     if (currentPlayer == 0){
                         printf("Le joueur 1 a gagné !!!!\n");
-                        vJ1++;
+                        vJ++;
                     } else {
-                        printf("Le joueur 2 a gagné !!!!\n");
-                        vJ2++;
+                        printf("L'ordinateur a gagné !!!!\n");
+                        vC++;
                     }
                 }
                 if (currentPlayer == 0){
@@ -73,11 +79,11 @@ void initJvJ(){
                 if(win(table,currentPlayer) == true){
                     if (currentPlayer == 0){
                         printf("Le joueur 1 a gagné !!!!\n");
-                        vJ1++;
+                        vJ++;
                         isOver = true;
                     } else {
-                        printf("Le joueur 2 a gagné !!!!\n");
-                        vJ2++;
+                        printf("L'ordinateur a gagné !!!!\n");
+                        vC++;
                         isOver = true;
                     }
                     if (currentPlayer == 0){
@@ -102,18 +108,18 @@ void initJvJ(){
                 countNumber++;
             }
         }
-        printf("J1 : %d,  J2 : %d,  Draw : %d\n",vJ1,vJ2,draw);
+        printf("J : %d,  C : %d,  Draw : %d\n",vJ,vC,draw);
         printf("Voulez vous rejouer ? oui(1) non(2)\n");
         int answer;
         scanf("%d",&answer);
         if (answer != 1){
             should_run = 0;
-            if (vJ1 > vJ2 ){
+            if (vJ > vC ){
                 printf("Le joueur 1 a été le meilleur gg à lui\n");
-            } else if (vJ1 == vJ2){
-                printf("Les deux joueurs ont autant gagné l'un que l'autre on s'emmerde\n");
+            } else if (vJ == vC){
+                printf("Vous êtes à égalité avec l'ordinateur\n");
             } else {
-                printf("Le joueur 2 a été le meilleur gg à lui\n");
+                printf("L'ordinateur a été le meilleur gg à lui\n");
             }
         }
     }
