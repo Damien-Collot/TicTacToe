@@ -19,19 +19,22 @@ void initJvC(){
     
     while (should_run == 1)
     {
-        printf("\nVoulez vous une matrice 3x3(1) ou 5x5(2) ?\n");
+        printf("\nVoulez vous une matrice 3x3(1) ou 5x5(2) ou 7x7(3) ?\n");
         int mode;
         scanf("%d",&mode);
-        while (mode != 1 && mode != 2)
+        while (mode != 1 && mode != 2 && mode != 3)
         {
-            printf("Paramêtre faux !!!");
+            printf("Paramètre faux !!!");
             scanf("%d",&mode);
         }
         if (mode == 1){
             JvCMode1();
-        } else {
+        } else if (mode == 2) {
             JvCMode2();
+        } else {
+            JvCMode3();
         }
+        
         printf("J : %d,  C : %d,  Draw : %d\n",vJ,vC,draw1);
         printf("Voulez vous rejouer ? oui(1) non(2)\n");
         int answer;
