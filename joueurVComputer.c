@@ -156,7 +156,7 @@ void JvCMode2(){
     { 16, 17, 18, 19, 20},
     { 21, 22, 23, 24, 25}
     };
-    firstAffiche1(table);
+    firstAffiche(table);
 
     while (isOver == false){
         int rep;
@@ -184,7 +184,7 @@ void JvCMode2(){
             }
         }
 
-        afficheMatrice1(table);
+        afficheMatrice(table);
         
         isOver = win1(table,currentPlayer1);
         
@@ -254,7 +254,7 @@ void JvCMode3(){
     { 36, 37, 38, 39, 40, 41, 42},
     { 43, 44, 45, 46, 47, 48, 49}
     };
-    firstAffiche2(table);
+    firstAffiche(table);
 
     while (isOver == false){
         int rep;
@@ -282,7 +282,7 @@ void JvCMode3(){
             }
         }
 
-        afficheMatrice2(table);
+        afficheMatrice(table);
         
         isOver = win2(table,currentPlayer1);
         
