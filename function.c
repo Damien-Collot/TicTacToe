@@ -61,13 +61,13 @@ bool win(int tab[3][3], int joueur)
   return false;
 } 
 
-bool CheckCoup(int tab[3][3],int valCoup)
+bool CheckCoup(int tab[n][n],int valCoup)
 {
   //on exclue les valeurs n'étant pas incluses entre 1 et 9 
   //on parcourt les valeurds 
-  for(int i=0;i<3;i++)
+  for(int i=0;i<n;i++)
   {
-    for(int j=0;j<3;j++)
+    for(int j=0;j<n;j++)
     {
       if(tab[i][j]==valCoup){
         return true;
@@ -80,11 +80,11 @@ bool CheckCoup(int tab[3][3],int valCoup)
   return false;
 }
 
-bool CheckCoupComputer(int tab[3][3],int valCoup){
+bool CheckCoupComputer(int tab[n][n],int valCoup){
   //on parcourt les valeurds 
-  for(int i=0;i<3;i++)
+  for(int i=0;i<n;i++)
   {
-    for(int j=0;j<3;j++)
+    for(int j=0;j<n;j++)
     {
       if(tab[i][j]==valCoup){
         return true;
@@ -151,37 +151,36 @@ bool win1(int tab[5][5], int joueur)
 
 } 
 
-bool CheckCoup1(int tab[5][5],int valCoup)
+bool win2(int tab[7][7], int joueur)
 {
-  //on exclue les valeurs n'étant pas incluses entre 1 et 9 
-  //on parcourt les valeurds 
-  for(int i=0;i<5;i++)
+  //test pour les lignes
+  for(int i=0;i<7;i++)
   {
-    for(int j=0;j<5;j++)
+    if(tab[i][0]==joueur && tab[i][0]==tab[i][1] && tab[i][1]==tab[i][2] && tab[i][2] == tab[i][3] && tab[i][3] == tab[i][4] && tab[i][4]==tab[i][5] && tab[i][5]==tab[i][6])
     {
-      if(tab[i][j]==valCoup){
-        return true;
-      }
+      return true;
     }
   }
-  //si le true n'est pas retourné c'est que le nombre n'est pas inclue entre 1 et 9 et/ou qu'il n'est plus disponible dans la matrice
-  //on retourne donc false
-  printf("La valeur rentrée n'est pas disponible, veuillez réessayer.\n");
+  
+  //test pour les colonnes
+  for(int i=0;i<7;i++)
+  {
+    if(tab[0][i]==joueur && tab[0][i]==tab[1][i] && tab[1][i]==tab[2][i] && tab[2][i] == tab[3][i] && tab[3][i] == tab[4][i] && tab[4][i]==tab[5][i] && tab[5][i]==tab[6][i])
+    {
+      return true;
+    }
+  }
+  
+  //test pour les diagonales
+  if(tab[0][0]==joueur && tab[0][0]==tab[1][1] && tab[1][1]==tab[2][2] && tab[2][2]==tab[3][3] && tab[3][3]==tab[4][4] && tab[4][4]==tab[5][5] && tab[5][5]==tab[6][6])
+  {
+    return true;
+  }
+  if(tab[0][6]== joueur && tab[0][6] == tab[1][5] && tab[1][5] == tab[2][4] && tab[2][4]==tab[3][3] && tab[3][3]==tab[4][2] && tab[4][2]==tab[5][1] && tab[5][1]==tab[6][0])
+  {
+    return true;
+  }
+  
   return false;
-}
 
-bool CheckCoupComputer1(int tab[5][5],int valCoup){
-  //on parcourt les valeurds 
-  for(int i=0;i<5;i++)
-  {
-    for(int j=0;j<5;j++)
-    {
-      if(tab[i][j]==valCoup){
-        return true;
-      }
-    }
-  }
-  //si le true n'est pas retourné c'est que le nombre n'est pas inclue entre 1 et 9 et/ou qu'il n'est plus disponible dans la matrice
-  //on retourne donc false
-  return false;
-}
+} 
