@@ -2,9 +2,9 @@
 #include<stdio.h>
 #include <stdbool.h>
 
-void firstAffiche(int tableau[3][3]){
-    for (int i=0;i<3;i++){
-        for (int j=0;j<3;j++){
+void firstAffiche(int tableau[n][n]){
+    for (int i=0;i<n;i++){
+        for (int j=0;j<n;j++){
             printf("|%d|", tableau[i][j]);
         }
         printf("\n");
@@ -12,61 +12,9 @@ void firstAffiche(int tableau[3][3]){
     printf("\n");
 }
 
-void afficheMatrice(int tableau[3][3]){
-    for (int i=0;i<3;i++){
-        for (int j=0;j<3;j++){
-            if (tableau[i][j] == 0){
-                printf("|X|");
-            } else if (tableau[i][j] == -1){
-                printf("|O|");
-            } else {
-                printf("| |");
-            }
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
-
-void firstAffiche1(int tableau[5][5]){
-    for (int i=0;i<5;i++){
-        for (int j=0;j<5;j++){
-            printf("|%d|", tableau[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
-
-void afficheMatrice1(int tableau[5][5]){
-    for (int i=0;i<5;i++){
-        for (int j=0;j<5;j++){
-            if (tableau[i][j] == 0){
-                printf("|X|");
-            } else if (tableau[i][j] == -1){
-                printf("|O|");
-            } else {
-                printf("| |");
-            }
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
-
-void firstAffiche2(int tableau[7][7]){
-    for (int i=0;i<7;i++){
-        for (int j=0;j<7;j++){
-            printf("|%d|", tableau[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
-
-void afficheMatrice2(int tableau[7][7]){
-    for (int i=0;i<7;i++){
-        for (int j=0;j<7;j++){
+void afficheMatrice(int tableau[n][n]){
+    for (int i=0;i<n;i++){
+        for (int j=0;j<n;j++){
             if (tableau[i][j] == 0){
                 printf("|X|");
             } else if (tableau[i][j] == -1){
