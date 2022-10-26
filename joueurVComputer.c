@@ -238,4 +238,102 @@ void JvCMode2(){
             countNumber++;
         }
     }
+    
+void JvCMode3(){
+    bool isOver = false;
+    int countNumber = 0;
+    printf("\nVoici les coups possibles : \n");
+    int table[7][7]= 
+    {   
+    { 1, 2, 3, 4, 5, 6, 7},
+    { 8, 9, 10, 11, 12, 13, 14},
+    { 15, 16, 17, 18, 19, 20, 21},
+    { 22, 23, 24, 25, 26, 27, 28},
+    { 29, 30, 31, 32, 33, 34, 35},
+    { 36, 37, 38, 39, 40, 41, 42},
+    { 43, 44, 45, 46, 47, 48, 49}
+    };
+    firstAffiche2(table);
+
+    while (isOver == false){
+        int rep;
+        if (currentPlayer1 == 0){
+            printf("Joueur 1 entrez un coup compris entre 1 et 9 et possible\n");
+            scanf("%d",&rep);
+            while (CheckCoup1(table,rep) != true)
+            {
+                scanf("%d",&rep);
+            }
+        } else {
+            rep = rand() % 49 + 1;
+            while (CheckCoupComputer1(table,rep) != true)
+            {
+                rep = rand() % 49 + 1;
+            }
+        }
+        for(int i=0;i<7;i++)
+        {
+            for(int j=0;j<7;j++)
+            {
+                if(table[i][j]==rep){
+                table[i][j] = currentPlayer1;
+                }
+            }
+        }
+
+        afficheMatrice2(table);
+        
+        isOver = win2(table,currentPlayer1);
+        
+        if (countNumber == 48){
+            if (isOver != true){
+                isOver = true;
+                printf("La partie se termine sur un nul\n");
+                draw1++;
+            } else {
+                if (currentPlayer1 == 0){
+                    printf("Le joueur 1 a gagné !!!!\n");
+                    vJ++;
+                } else {
+                    printf("L'ordinateur a gagné !!!!\n");
+                    vC++;
+                }
+            }
+            if (currentPlayer1 == 0){
+                    currentPlayer1 = -1;
+                } else {
+                    currentPlayer1 = 0;
+                }
+        }
+        else if (countNumber > 6){
+            if(win2(table,currentPlayer1) == true){
+                if (currentPlayer1 == 0){
+                    printf("Le joueur 1 a gagné !!!!\n");
+                    vJ++;
+                } else {
+                    printf("L'ordinateur a gagné !!!!\n");
+                    vC++;
+                }
+                if (currentPlayer1 == 0){
+                    currentPlayer1 = -1;
+                } else {
+                    currentPlayer1 = 0;
+                }
+            } else {
+                countNumber++;
+                if (currentPlayer1 == 0){
+                    currentPlayer1 = -1;
+                } else {
+                    currentPlayer1 = 0;
+                }
+            }
+        } else {
+            if (currentPlayer1 == 0){
+                currentPlayer1 = -1;
+            } else {
+                currentPlayer1 = 0;
+            }
+            countNumber++;
+        }
+    }
 }
