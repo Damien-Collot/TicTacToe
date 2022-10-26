@@ -54,6 +54,32 @@ void afficheMatrice1(int tableau[5][5]){
     printf("\n");
 }
 
+void firstAffiche2(int tableau[7][7]){
+    for (int i=0;i<7;i++){
+        for (int j=0;j<7;j++){
+            printf("|%d|", tableau[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+void afficheMatrice2(int tableau[7][7]){
+    for (int i=0;i<7;i++){
+        for (int j=0;j<7;j++){
+            if (tableau[i][j] == 0){
+                printf("|X|");
+            } else if (tableau[i][j] == -1){
+                printf("|O|");
+            } else {
+                printf("| |");
+            }
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
 bool win(int tab[3][3], int joueur)
 {
   //test pour les lignes
