@@ -1,8 +1,6 @@
 #include <stdbool.h>
-void firstAffiche(int tableau[3][3]);
-void afficheMatrice(int tableau[3][3]);
-void firstAffiche1(int tableau[5][5]);
-void afficheMatrice1(int tableau[5][5]);
+void firstAffiche(int tableau[n][n]);
+void afficheMatrice(int tableau[n][n]);
 bool win(int tab[3][3], int joueur);
 bool CheckCoup(int tab[3][3],int valCoup);
 bool CheckCoupComputer(int tab[3][3],int valCoup);
