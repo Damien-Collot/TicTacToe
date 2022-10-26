@@ -62,20 +62,20 @@ void JvCMode1(){
     { 4 , 5 , 6},
     { 7 , 8 , 9}
     };
-    firstAffiche(table);
+    firstAffiche(3,table);
 
     while (isOver == false){
         int rep;
         if (currentPlayer1 == 0){
             printf("Joueur 1 entrez un coup compris entre 1 et 9 et possible\n");
             scanf("%d",&rep);
-            while (CheckCoup(table,rep) != true)
+            while (CheckCoup(3, table,rep) != true)
             {
                 scanf("%d",&rep);
             }
         } else {
             rep = rand() % 9 + 1;
-            while (CheckCoupComputer(table,rep) != true)
+            while (CheckCoupComputer(3, table,rep) != true)
             {
                 rep = rand() % 9 + 1;
             }
@@ -90,7 +90,7 @@ void JvCMode1(){
             }
         }
 
-        afficheMatrice(table);
+        afficheMatrice(3, table);
         
         isOver = win(table,currentPlayer1);
 
@@ -159,20 +159,20 @@ void JvCMode2(){
     { 16, 17, 18, 19, 20},
     { 21, 22, 23, 24, 25}
     };
-    firstAffiche(table);
+    firstAffiche(5, table);
 
     while (isOver == false){
         int rep;
         if (currentPlayer1 == 0){
             printf("Joueur 1 entrez un coup compris entre 1 et 9 et possible\n");
             scanf("%d",&rep);
-            while (CheckCoup(table,rep) != true)
+            while (CheckCoup(5,table,rep) != true)
             {
                 scanf("%d",&rep);
             }
         } else {
             rep = rand() % 25 + 1;
-            while (CheckCoupComputer(table,rep) != true)
+            while (CheckCoupComputer(5,table,rep) != true)
             {
                 rep = rand() % 25 + 1;
             }
@@ -187,7 +187,7 @@ void JvCMode2(){
             }
         }
 
-        afficheMatrice(table);
+        afficheMatrice(5, table);
         
         isOver = win1(table,currentPlayer1);
         
@@ -242,7 +242,8 @@ void JvCMode2(){
             countNumber++;
         }
     }
-    
+}
+
 void JvCMode3(){
     bool isOver = false;
     int countNumber = 0;
@@ -257,20 +258,20 @@ void JvCMode3(){
     { 36, 37, 38, 39, 40, 41, 42},
     { 43, 44, 45, 46, 47, 48, 49}
     };
-    firstAffiche(table);
+    firstAffiche(7, table);
 
     while (isOver == false){
         int rep;
         if (currentPlayer1 == 0){
             printf("Joueur 1 entrez un coup compris entre 1 et 9 et possible\n");
             scanf("%d",&rep);
-            while (CheckCoup(table,rep) != true)
+            while (CheckCoup(7, table,rep) != true)
             {
                 scanf("%d",&rep);
             }
         } else {
             rep = rand() % 49 + 1;
-            while (CheckCoupComputer(table,rep) != true)
+            while (CheckCoupComputer(7, table,rep) != true)
             {
                 rep = rand() % 49 + 1;
             }
@@ -285,7 +286,7 @@ void JvCMode3(){
             }
         }
 
-        afficheMatrice(table);
+        afficheMatrice(7, table);
         
         isOver = win2(table,currentPlayer1);
         

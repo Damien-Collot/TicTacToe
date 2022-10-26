@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include <stdbool.h>
 
-void firstAffiche(int tableau[n][n]){
+void firstAffiche(int n, int tableau[n][n]){
     for (int i=0;i<n;i++){
         for (int j=0;j<n;j++){
             printf("|%d|", tableau[i][j]);
@@ -12,7 +12,7 @@ void firstAffiche(int tableau[n][n]){
     printf("\n");
 }
 
-void afficheMatrice(int tableau[n][n]){
+void afficheMatrice(int n, int tableau[n][n]){
     for (int i=0;i<n;i++){
         for (int j=0;j<n;j++){
             if (tableau[i][j] == 0){
@@ -61,7 +61,7 @@ bool win(int tab[3][3], int joueur)
   return false;
 } 
 
-bool CheckCoup(int tab[n][n],int valCoup)
+bool CheckCoup(int n, int tab[n][n],int valCoup)
 {
   //on exclue les valeurs n'étant pas incluses entre 1 et 9 
   //on parcourt les valeurds 
@@ -80,7 +80,7 @@ bool CheckCoup(int tab[n][n],int valCoup)
   return false;
 }
 
-bool CheckCoupComputer(int tab[n][n],int valCoup){
+bool CheckCoupComputer(int n, int tab[n][n],int valCoup){
   //on parcourt les valeurds 
   for(int i=0;i<n;i++)
   {
@@ -96,9 +96,9 @@ bool CheckCoupComputer(int tab[n][n],int valCoup){
   return false;
 }
 
-bool checkDiagonal(int tab[5][5], int joueur){
-  for (int i=0;i<5;i++){
-    for (int j=0;j<5;j++){
+bool checkDiagonal(int n, int tab[n][n], int joueur){
+  for (int i=0;i<n;i++){
+    for (int j=0;j<n;j++){
       if (j==i){
         if (tab[i][j] != joueur){
           return false;
@@ -109,10 +109,10 @@ bool checkDiagonal(int tab[5][5], int joueur){
   return true;
 }
 
-bool CheckDiagonal2(int tab[5][5], int joueur){
-    for (int i=0;i<5;i++){
-    for (int j=0;j<5;j++){
-      if (j==4-i){
+bool CheckDiagonal2(int n, int tab[n][n], int joueur){
+    for (int i=0;i<n;i++){
+    for (int j=0;j<n;j++){
+      if (j==n-1-i){
         if (tab[i][j] != joueur){
           return false;
         }
@@ -143,11 +143,11 @@ bool win1(int tab[5][5], int joueur)
     }
   }
   
-  if(checkDiagonal(tab,joueur) == true){
+  if(checkDiagonal(5, tab,joueur) == true){
     return true;
   };
 
-  return CheckDiagonal2(tab,joueur);
+  return CheckDiagonal2(5, tab,joueur);
 
 } 
 
@@ -171,15 +171,11 @@ bool win2(int tab[7][7], int joueur)
     }
   }
   
-  //test pour les diagonales
-  if(tab[0][0]==joueur && tab[0][0]==tab[1][1] && tab[1][1]==tab[2][2] && tab[2][2]==tab[3][3] && tab[3][3]==tab[4][4] && tab[4][4]==tab[5][5] && tab[5][5]==tab[6][6])
-  {
+  if(checkDiagonal(7, tab,joueur) == true){
     return true;
-  }
-  if(tab[0][6]== joueur && tab[0][6] == tab[1][5] && tab[1][5] == tab[2][4] && tab[2][4]==tab[3][3] && tab[3][3]==tab[4][2] && tab[4][2]==tab[5][1] && tab[5][1]==tab[6][0])
-  {
-    return true;
-  }
+  };
+
+  return CheckDiagonal2(7, tab,joueur);
   
   return false;
 
