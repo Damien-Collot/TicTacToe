@@ -163,13 +163,13 @@ void JvCMode2(){
         if (currentPlayer1 == 0){
             printf("Joueur 1 entrez un coup compris entre 1 et 9 et possible\n");
             scanf("%d",&rep);
-            while (CheckCoup1(table,rep) != true)
+            while (CheckCoup(table,rep) != true)
             {
                 scanf("%d",&rep);
             }
         } else {
             rep = rand() % 25 + 1;
-            while (CheckCoupComputer1(table,rep) != true)
+            while (CheckCoupComputer(table,rep) != true)
             {
                 rep = rand() % 25 + 1;
             }
@@ -261,13 +261,13 @@ void JvCMode3(){
         if (currentPlayer1 == 0){
             printf("Joueur 1 entrez un coup compris entre 1 et 9 et possible\n");
             scanf("%d",&rep);
-            while (CheckCoup1(table,rep) != true)
+            while (CheckCoup(table,rep) != true)
             {
                 scanf("%d",&rep);
             }
         } else {
             rep = rand() % 49 + 1;
-            while (CheckCoupComputer1(table,rep) != true)
+            while (CheckCoupComputer(table,rep) != true)
             {
                 rep = rand() % 49 + 1;
             }
