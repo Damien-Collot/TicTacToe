@@ -3,105 +3,32 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+void JvJMode1();
+void JvJMode2();
+int currentPlayer = 0;
+int vJ1 = 0;
+int vJ2 = 0;
+int draw = 0;
+
 void initJvJ(){
-    int currentPlayer = 0;
     int should_run = 1;
-    int vJ1 = 0;
-    int vJ2 = 0;
-    int draw = 0;
 
     while (should_run == 1)
     {
-        bool isOver = false;
-        int countNumber = 0;
-        printf("\nVoici les coups possibles : \n");
-        int table[3][3] = 
+        printf("\nVoulez vous une matrice 3x3(1) ou 5x5(2) ?\n");
+        int mode;
+        scanf("%d",&mode);
+        while (mode != 1 && mode != 2)
         {
-        { 1 , 2 , 3},
-        { 4 , 5 , 6},
-        { 7 , 8 , 9}
-        };
-        firstAffiche(table);
-
-        while (isOver == false)
-        {
-            if (currentPlayer == 0){
-                printf("Joueur 1 entrez un coup compris entre 1 et 9 et possible\n");
-            } else {
-                printf("Joueur 2 entrez un coup compris entre 1 et 9 et possible\n");
-            }
-            int rep;
-            scanf("%d",&rep);
-            while (CheckCoup(table,rep) != true)
-            {
-                scanf("%d",&rep);
-            }
-            for(int i=0;i<3;i++)
-            {
-                for(int j=0;j<3;j++)
-                {
-                    if(table[i][j]==rep){
-                    table[i][j] = currentPlayer;
-                    }
-                }
-            }
-
-            afficheMatrice(table);
-
-            if (countNumber == 8){
-                isOver = win(table,currentPlayer);
-                if (isOver != true){
-                    isOver = true;
-                    printf("La partie se termine sur un nul\n");
-                    draw++;
-                } else {
-                    if (currentPlayer == 0){
-                        printf("Le joueur 1 a gagné !!!!\n");
-                        vJ1++;
-                    } else {
-                        printf("Le joueur 2 a gagné !!!!\n");
-                        vJ2++;
-                    }
-                }
-                if (currentPlayer == 0){
-                        currentPlayer = -1;
-                    } else {
-                        currentPlayer = 0;
-                    }
-            }
-            else if (countNumber > 3){
-                if(win(table,currentPlayer) == true){
-                    if (currentPlayer == 0){
-                        printf("Le joueur 1 a gagné !!!!\n");
-                        vJ1++;
-                        isOver = true;
-                    } else {
-                        printf("Le joueur 2 a gagné !!!!\n");
-                        vJ2++;
-                        isOver = true;
-                    }
-                    if (currentPlayer == 0){
-                        currentPlayer = -1;
-                    } else {
-                        currentPlayer = 0;
-                    }
-                } else {
-                    countNumber++;
-                    if (currentPlayer == 0){
-                        currentPlayer = -1;
-                    } else {
-                        currentPlayer = 0;
-                    }
-                }
-            } else {
-                if (currentPlayer == 0){
-                    currentPlayer = -1;
-                } else {
-                    currentPlayer = 0;
-                }
-                countNumber++;
-            }
+            printf("Paramêtre faux !!!");
+            scanf("%d",&mode);
         }
+        if (mode == 1){
+            JvJMode1();
+        } else {
+            JvJMode2();
+        }
+        
         printf("J1 : %d,  J2 : %d,  Draw : %d\n",vJ1,vJ2,draw);
         printf("Voulez vous rejouer ? oui(1) non(2)\n");
         int answer;
@@ -115,6 +42,193 @@ void initJvJ(){
             } else {
                 printf("Le joueur 2 a été le meilleur gg à lui\n");
             }
+        }
+    }
+}
+
+void JvJMode1(){
+    bool isOver = false;
+    int countNumber = 0;
+    printf("Voici les coups possibles : \n");
+    int table[3][3] = 
+        {
+        { 1 , 2 , 3},
+        { 4 , 5 , 6},
+        { 7 , 8 , 9}
+        };
+    firstAffiche(table);
+    while (isOver == false)
+    {
+        if (currentPlayer == 0){
+            printf("Joueur 1 entrez un coup\n");
+        } else {
+            printf("Joueur 2 entrez un coup\n");
+        }
+        int rep;
+        scanf("%d",&rep);
+        while (CheckCoup(table,rep) != true)
+        {
+            scanf("%d",&rep);
+        }
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                if(table[i][j]==rep){
+                table[i][j] = currentPlayer;
+                }
+            }
+        }
+
+        afficheMatrice(table);
+
+        if (countNumber == 8){
+            isOver = win(table,currentPlayer);
+            if (isOver != true){
+                isOver = true;
+                printf("La partie se termine sur un nul\n");
+                draw++;
+            } else {
+                if (currentPlayer == 0){
+                    printf("Le joueur 1 a gagné !!!!\n");
+                    vJ1++;
+                } else {
+                    printf("Le joueur 2 a gagné !!!!\n");
+                    vJ2++;
+                }
+            }
+            if (currentPlayer == 0){
+                    currentPlayer = -1;
+                } else {
+                    currentPlayer = 0;
+                }
+        }
+        else if (countNumber > 3){
+            if(win(table,currentPlayer) == true){
+                if (currentPlayer == 0){
+                    printf("Le joueur 1 a gagné !!!!\n");
+                    vJ1++;
+                    isOver = true;
+                } else {
+                    printf("Le joueur 2 a gagné !!!!\n");
+                    vJ2++;
+                    isOver = true;
+                }
+                if (currentPlayer == 0){
+                    currentPlayer = -1;
+                } else {
+                    currentPlayer = 0;
+                }
+            } else {
+                countNumber++;
+                if (currentPlayer == 0){
+                    currentPlayer = -1;
+                } else {
+                    currentPlayer = 0;
+                }
+            }
+        } else {
+            if (currentPlayer == 0){
+                currentPlayer = -1;
+            } else {
+                currentPlayer = 0;
+            }
+            countNumber++;
+        }
+    }
+}
+
+void JvJMode2(){
+    bool isOver = false;
+    int countNumber = 0;
+    printf("Voici les coups possibles : \n");
+    int table[5][5]= 
+    {
+        { 1, 2, 3, 4, 5},
+        { 6, 7, 8, 9, 10},
+        { 11, 12, 13, 14, 15},
+        { 16, 17, 18, 19, 20},
+        { 21, 22, 23, 24, 25}
+    };
+    firstAffiche1(table);
+    while (isOver == false)
+    {
+        if (currentPlayer == 0){
+            printf("Joueur 1 entrez un coup\n");
+        } else {
+            printf("Joueur 2 entrez un coup\n");
+        }
+        int rep;
+        scanf("%d",&rep);
+        while (CheckCoup1(table,rep) != true)
+        {
+            fflush(stdout);
+            scanf("%d",&rep);
+        }
+        for(int i=0;i<5;i++)
+        {
+            for(int j=0;j<5;j++)
+            {
+                if(table[i][j]==rep){
+                table[i][j] = currentPlayer;
+                }
+            }
+        }
+
+        afficheMatrice1(table);
+
+        if (countNumber == 24){
+            isOver = win1(table,currentPlayer);
+            if (isOver != true){
+                isOver = true;
+                printf("La partie se termine sur un nul\n");
+                draw++;
+            } else {
+                if (currentPlayer == 0){
+                    printf("Le joueur 1 a gagné !!!!\n");
+                    vJ1++;
+                } else {
+                    printf("Le joueur 2 a gagné !!!!\n");
+                    vJ2++;
+                }
+            }
+            if (currentPlayer == 0){
+                    currentPlayer = -1;
+                } else {
+                    currentPlayer = 0;
+                }
+        }
+        else if (countNumber > 3){
+            if(win1(table,currentPlayer) == true){
+                if (currentPlayer == 0){
+                    printf("Le joueur 1 a gagné !!!!\n");
+                    vJ1++;
+                    isOver = true;
+                } else {
+                    printf("Le joueur 2 a gagné !!!!\n");
+                    vJ2++;
+                    isOver = true;
+                }
+                if (currentPlayer == 0){
+                    currentPlayer = -1;
+                } else {
+                    currentPlayer = 0;
+                }
+            } else {
+                countNumber++;
+                if (currentPlayer == 0){
+                    currentPlayer = -1;
+                } else {
+                    currentPlayer = 0;
+                }
+            }
+        } else {
+            if (currentPlayer == 0){
+                currentPlayer = -1;
+            } else {
+                currentPlayer = 0;
+            }
+            countNumber++;
         }
     }
 }
