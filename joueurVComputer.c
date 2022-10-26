@@ -87,9 +87,10 @@ void JvCMode1(){
         }
 
         afficheMatrice(table);
+        
+        isOver = win(table,currentPlayer1);
 
         if (countNumber == 8){
-            isOver = win(table,currentPlayer1);
             if (isOver != true){
                 isOver = true;
                 printf("La partie se termine sur un nul\n");
@@ -110,15 +111,13 @@ void JvCMode1(){
                 }
         }
         else if (countNumber > 3){
-            if(win(table,currentPlayer1) == true){
+            if(isOver == true){
                 if (currentPlayer1 == 0){
                     printf("Le joueur 1 a gagné !!!!\n");
                     vJ++;
-                    isOver = true;
                 } else {
                     printf("L'ordinateur a gagné !!!!\n");
                     vC++;
-                    isOver = true;
                 }
                 if (currentPlayer1 == 0){
                     currentPlayer1 = -1;
@@ -185,9 +184,10 @@ void JvCMode2(){
         }
 
         afficheMatrice1(table);
-
+        
+        isOver = win1(table,currentPlayer1);
+        
         if (countNumber == 24){
-            isOver = win1(table,currentPlayer1);
             if (isOver != true){
                 isOver = true;
                 printf("La partie se termine sur un nul\n");
@@ -212,11 +212,9 @@ void JvCMode2(){
                 if (currentPlayer1 == 0){
                     printf("Le joueur 1 a gagné !!!!\n");
                     vJ++;
-                    isOver = true;
                 } else {
                     printf("L'ordinateur a gagné !!!!\n");
                     vC++;
-                    isOver = true;
                 }
                 if (currentPlayer1 == 0){
                     currentPlayer1 = -1;
