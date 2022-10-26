@@ -7,6 +7,7 @@
 
 void JvCMode1();
 void JvCMode2();
+void JvCMode3();
 int currentPlayer1 = 0;
 int vJ = 0;
 int vC = 0;
