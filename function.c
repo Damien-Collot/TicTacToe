@@ -1,6 +1,7 @@
 #include "function.h"
 #include<stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 void firstAffiche(int n, int tableau[n][n]){
     for (int i=0;i<n;i++){
@@ -180,3 +181,33 @@ bool win2(int tab[7][7], int joueur)
   return false;
 
 } 
+
+
+void saveGame(int tailleMap, int cJ1, int cJ2, int listCoupJ1[cJ1] , int listCoupJ2[cJ2], int firstPlayer){
+  FILE *fptr = fopen("saveTicTacToe","w");
+  fprintf(fptr, "%d\n", firstPlayer);
+  fprintf(fptr, "%d\n", tailleMap);
+  fprintf(fptr, "%d\n", cJ1);
+  fprintf(fptr, "%d\n", cJ2);
+  for (int i=0; i < cJ1; i++){
+    fprintf(fptr, "%d", listCoupJ1[i]);
+  }
+
+  fprintf(fptr, "\n");
+
+  for (int j=0; j < cJ2; j++){
+    fprintf(fptr, "%d", listCoupJ2[j]);
+  }
+  
+  fclose(fptr);
+}
+
+void readGame(){
+  FILE* file = fopen ("saveTicTacToe", "r");
+  if (file == NULL){
+    printf("FICHIER NON PRESENT");
+    return;
+  }
+  int i = 0;
+
+}

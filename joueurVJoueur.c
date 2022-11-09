@@ -16,18 +16,20 @@ void initJvJ(){
 
     while (should_run == 1)
     {
-        printf("\nVoulez vous une matrice 3x3(1) ou 5x5(2) ?\n");
+        printf("\nVoulez vous une matrice 3x3(1) ou 5x5(2) ou 7x7(3) ?\n");
         int mode;
         scanf("%d",&mode);
-        while (mode != 1 && mode != 2)
+        while (mode != 1 && mode != 2 && mode != 3)
         {
             printf("Paramêtre faux !!!");
             scanf("%d",&mode);
         }
         if (mode == 1){
             JvJMode1();
-        } else {
+        } else if (mode == 2){
             JvJMode2();
+        } else {
+            JvJMode3();
         }
         
         printf("J1 : %d,  J2 : %d,  Draw : %d\n",vJ1,vJ2,draw);
@@ -50,6 +52,15 @@ void initJvJ(){
 void JvJMode1(){
     bool isOver = false;
     int countNumber = 0;
+
+    //Variables pour la sauvegarde
+    int listCoupJoueur1[5];
+    int listCoupJoueur2[5];
+    int coupJ1 = 0;
+    int coupJ2 = 0;
+    int firstToPlay = currentPlayer;
+
+    //Début de la partie
     printf("Voici les coups possibles : \n");
     int table[3][3] = 
         {
@@ -71,6 +82,15 @@ void JvJMode1(){
         {
             scanf("%d",&rep);
         }
+
+        if (currentPlayer == 0){
+            listCoupJoueur1[coupJ1] = rep;
+            coupJ1 ++;
+        } else {
+            listCoupJoueur2[coupJ2] = rep;
+            coupJ2 ++;
+        }
+
         for(int i=0;i<3;i++)
         {
             for(int j=0;j<3;j++)
@@ -80,6 +100,7 @@ void JvJMode1(){
                 }
             }
         }
+        
 
         afficheMatrice(3, table);
 
@@ -137,11 +158,26 @@ void JvJMode1(){
             countNumber++;
         }
     }
+    printf("Voulez vous sauvegarder ? oui(1) non(2)\n");
+    int save;
+    scanf("%d",&save);
+    if (save == 1){
+        saveGame(3,coupJ1, coupJ2, listCoupJoueur1,listCoupJoueur2, firstToPlay);
+    }
 }
 
 void JvJMode2(){
     bool isOver = false;
     int countNumber = 0;
+
+    //Variables pour la sauvegarde
+    int listCoupJoueur1[13];
+    int listCoupJoueur2[13];
+    int coupJ1 = 0;
+    int coupJ2 = 0;
+    int firstToPlay = currentPlayer;
+
+    //Début de la partie
     printf("Voici les coups possibles : \n");
     int table[5][5]= 
     {
@@ -166,6 +202,15 @@ void JvJMode2(){
             fflush(stdout);
             scanf("%d",&rep);
         }
+
+        if (currentPlayer == 0){
+            listCoupJoueur1[coupJ1] = rep;
+            coupJ1 ++;
+        } else {
+            listCoupJoueur2[coupJ2] = rep;
+            coupJ2 ++;
+        }
+
         for(int i=0;i<5;i++)
         {
             for(int j=0;j<5;j++)
@@ -232,11 +277,26 @@ void JvJMode2(){
             countNumber++;
         }
     }
+    printf("Voulez vous sauvegarder ? oui(1) non(2)\n");
+    int save;
+    scanf("%d",&save);
+    if (save == 1){
+        saveGame(5,coupJ1, coupJ2, listCoupJoueur1, listCoupJoueur2, firstToPlay);
+    }
 }
 
 void JvJMode3(){
-        bool isOver = false;
+    bool isOver = false;
     int countNumber = 0;
+
+    // Variables pour la sauvegarde;
+    int listCoupJoueur1[25];
+    int listCoupJoueur2[25];
+    int coupJ1 = 0;
+    int coupJ2 = 0;
+    int firstToPlay;
+
+    //Début de la partie
     printf("Voici les coups possibles : \n");
     int table[7][7]= 
     {   
@@ -262,6 +322,15 @@ void JvJMode3(){
         {
             scanf("%d",&rep);
         }
+
+        if (currentPlayer == 0){
+            listCoupJoueur1[coupJ1] = rep;
+            coupJ1 ++;
+        } else {
+            listCoupJoueur2[coupJ2] = rep;
+            coupJ2 ++;
+        }
+
         for(int i=0;i<7;i++)
         {
             for(int j=0;j<7;j++)
@@ -275,7 +344,7 @@ void JvJMode3(){
         afficheMatrice(7, table);
 
         if (countNumber == 8){
-            isOver = win(table,currentPlayer);
+            isOver = win2(table,currentPlayer);
             if (isOver != true){
                 isOver = true;
                 printf("La partie se termine sur un nul\n");
@@ -296,7 +365,7 @@ void JvJMode3(){
                 }
         }
         else if (countNumber > 7){
-            if(win(table,currentPlayer) == true){
+            if(win2(table,currentPlayer) == true){
                 if (currentPlayer == 0){
                     printf("Le joueur 1 a gagné !!!!\n");
                     vJ1++;
@@ -327,5 +396,11 @@ void JvJMode3(){
             }
             countNumber++;
         }
+    }
+    printf("Voulez vous sauvegarder ? oui(1) non(2)\n");
+    int save;
+    scanf("%d",&save);
+    if (save == 1){
+        saveGame(3, coupJ1, coupJ2, listCoupJoueur1,listCoupJoueur2, firstToPlay);
     }
 }
