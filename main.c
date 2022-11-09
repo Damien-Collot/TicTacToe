@@ -4,9 +4,6 @@
 #include "joueurVComputer.h"
 
 int main(){
-
-readGame();
-
     printf("-----------TicTacToe-----------\n");
     printf("Choissisez votre mode de jeu : \n");
     printf("Joueur contre Joueur(1)\n");

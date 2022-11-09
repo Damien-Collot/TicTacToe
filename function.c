@@ -212,8 +212,8 @@ void readGame(){
   int tailleMap;
   int cJ1;
   int cJ2;
-  int* listCoupJ1;
-  int* listCoupJ2;
+  int listCoupJ1[50];
+  int listCoupJ2[50];
 
   char content[6][50];
   int cpt = 0;
@@ -226,4 +226,120 @@ void readGame(){
     printf("%s",content[i]);
   }
 
+  firstPlayer = atoi(content[0]);
+  printf("\n%d\n", firstPlayer);
+  tailleMap = atoi(content[1]);
+  printf("%d\n", tailleMap);
+  cJ1 = atoi(content[2]);
+  printf("%d\n", cJ1);
+  cJ2 = atoi(content[3]);
+  printf("%d\n", cJ2);
+
+  for (int i=0; i<cJ1; i++){
+    listCoupJ1[i] =  content[4][i] - '0';
+  }
+
+  for (int j=0; j<cJ2; j++){
+    listCoupJ2[j] = content[5][j] - '0';
+  }
+
+  int map[tailleMap][tailleMap];
+  int mapCount = 1;
+  for (int i=0; i< tailleMap;i++){
+    for (int j=0; j< tailleMap;j++){
+      map[i][j] = mapCount;
+      mapCount++;
+    }
+  }
+
+  firstAffiche(tailleMap, map);
+    bool isOver = false;
+    int nbJ1 = 0;
+    int nbJ2 = 0;
+    int coup;
+    int countNumber = 0;
+    while (isOver == false){
+    if (firstPlayer == 0){
+      coup = listCoupJ1[nbJ1];
+      nbJ1 ++;
+    } else {
+      coup = listCoupJ2[nbJ2];
+      nbJ2 ++;
+    }
+
+    for(int i=0;i<3;i++)
+    {
+      for(int j=0;j<3;j++)
+      {
+        if(map[i][j]==coup){
+          map[i][j] = firstPlayer;
+        }
+      }
+    }
+
+    afficheMatrice(tailleMap, map);
+
+    if (countNumber == 8){
+      if (tailleMap == 3){
+        isOver = win(map, firstPlayer);
+      } else if (tailleMap == 5){
+        isOver = win1(map,firstPlayer);
+      } else {
+        isOver = win2(map,firstPlayer);
+      }
+      if (isOver != true){
+          isOver = true;
+          printf("La partie se termine sur un nul\n");
+      } else {
+          if (firstPlayer == 0){
+              printf("Le joueur 1 a gagné !!!!\n");
+          } else {
+              printf("Le joueur 2 a gagné !!!!\n");
+          }
+      }
+      if (firstPlayer == 0){
+        firstPlayer = -1;
+      } else {
+        firstPlayer = 0;
+      }
+    }
+        else if (countNumber > 3){
+            bool jWin = false;
+            if (tailleMap == 3){
+              jWin = win(map, firstPlayer);
+            } else if (tailleMap == 5){
+              jWin = win1(map,firstPlayer);
+            } else {
+              jWin = win2(map,firstPlayer);
+            }
+            if(jWin){
+                if (firstPlayer == 0){
+                    printf("Le joueur 1 a gagné !!!!\n");
+                    isOver = true;
+                } else {
+                    printf("Le joueur 2 a gagné !!!!\n");
+                    isOver = true;
+                }
+                if (firstPlayer == 0){
+                    firstPlayer = -1;
+                } else {
+                    firstPlayer = 0;
+                }
+            } else {
+                countNumber++;
+                if (firstPlayer == 0){
+                    firstPlayer = -1;
+                } else {
+                    firstPlayer = 0;
+                }
+            }
+        } else {
+            if (firstPlayer == 0){
+                firstPlayer = -1;
+            } else {
+                firstPlayer = 0;
+            }
+            countNumber++;
+        }
+  }
 }
