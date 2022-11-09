@@ -55,6 +55,11 @@ void initJvC(){
 void JvCMode1(){
     bool isOver = false;
     int countNumber = 0;
+    int listCoupJoueur1[5];
+    int listCoupJoueur2[5];
+    int coupJ1 = 0;
+    int coupJ2 = 0;
+    int firstToPlay = currentPlayer1;
     printf("\nVoici les coups possibles : \n");
     int table[3][3] = 
     {
@@ -145,11 +150,22 @@ void JvCMode1(){
             countNumber++;
         }
     }
+    printf("Voulez vous sauvegarder ? oui(1) non(2)\n");
+    int save;
+    scanf("%d",&save);
+    if (save == 1){
+        saveGame(3,coupJ1, coupJ2, listCoupJoueur1,listCoupJoueur2, firstToPlay);
+    }
 }
 
 void JvCMode2(){
     bool isOver = false;
     int countNumber = 0;
+    int listCoupJoueur1[13];
+    int listCoupJoueur2[13];
+    int coupJ1 = 0;
+    int coupJ2 = 0;
+    int firstToPlay = currentPlayer1;
     printf("\nVoici les coups possibles : \n");
     int table[5][5]= 
     {   
@@ -242,11 +258,22 @@ void JvCMode2(){
             countNumber++;
         }
     }
+    printf("Voulez vous sauvegarder ? oui(1) non(2)\n");
+    int save;
+    scanf("%d",&save);
+    if (save == 1){
+        saveGame(3,coupJ1, coupJ2, listCoupJoueur1,listCoupJoueur2, firstToPlay);
+    }
 }
 
 void JvCMode3(){
     bool isOver = false;
     int countNumber = 0;
+    int listCoupJoueur1[25];
+    int listCoupJoueur2[25];
+    int coupJ1 = 0;
+    int coupJ2 = 0;
+    int firstToPlay = currentPlayer1;
     printf("\nVoici les coups possibles : \n");
     int table[7][7]= 
     {   
@@ -340,5 +367,11 @@ void JvCMode3(){
             }
             countNumber++;
         }
+    }
+    printf("Voulez vous sauvegarder ? oui(1) non(2)\n");
+    int save;
+    scanf("%d",&save);
+    if (save == 1){
+        saveGame(3,coupJ1, coupJ2, listCoupJoueur1,listCoupJoueur2, firstToPlay);
     }
 }
