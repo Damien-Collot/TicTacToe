@@ -21,7 +21,7 @@ void initJvJ(){
         scanf("%d",&mode);
         while (mode != 1 && mode != 2 && mode != 3)
         {
-            printf("Paramêtre faux !!!");
+            printf("Paramètre faux !!!");
             scanf("%d",&mode);
         }
         if (mode == 1){

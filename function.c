@@ -208,6 +208,22 @@ void readGame(){
     printf("FICHIER NON PRESENT");
     return;
   }
-  int i = 0;
+  int firstPlayer;
+  int tailleMap;
+  int cJ1;
+  int cJ2;
+  int* listCoupJ1;
+  int* listCoupJ2;
+
+  char content[6][50];
+  int cpt = 0;
+  while (fgets(content[cpt], 50, file))
+  {
+    cpt ++;
+  }
+  
+  for (int i=0; i< 6;i++){
+    printf("%s",content[i]);
+  }
 
 }
