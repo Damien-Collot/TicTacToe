@@ -5,18 +5,18 @@
 
 int main(){
     printf("-----------TicTacToe-----------\n");
-    printf("Choissisez votre mode de jeu : \n");
+    printf("Choississez votre mode de jeu : \n");
     printf("Joueur contre Joueur(1)\n");
     printf("Joueur contre Ordinateur(2)\n");
     printf("Ordinateur contre Ordinateur(3)\n");
-    printf("Simuler une partie sauvegarder(4)\n");
+    printf("Simuler une partie sauvegardée(4)\n");
     int rep;
     scanf("%d",&rep);
 
     if (rep < 1 || rep > 4){
         while (rep < 1 || rep > 4)
         {
-            printf("Veuillez entrez une option valide !!!\n");
+            printf("Veuillez entrer une option valide !!!\n");
             scanf("%d",&rep);
         }
     }

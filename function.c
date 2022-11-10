@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 void firstAffiche(int n, int tableau[n][n]){
     for (int i=0;i<n;i++){
@@ -221,19 +222,11 @@ void readGame(){
   {
     cpt ++;
   }
-  
-  for (int i=0; i< 6;i++){
-    printf("%s",content[i]);
-  }
 
   firstPlayer = atoi(content[0]);
-  printf("\n%d\n", firstPlayer);
   tailleMap = atoi(content[1]);
-  printf("%d\n", tailleMap);
   cJ1 = atoi(content[2]);
-  printf("%d\n", cJ1);
   cJ2 = atoi(content[3]);
-  printf("%d\n", cJ2);
 
   for (int i=0; i<cJ1; i++){
     listCoupJ1[i] =  content[4][i] - '0';
@@ -341,5 +334,6 @@ void readGame(){
             }
             countNumber++;
         }
+    sleep(1);
   }
 }
