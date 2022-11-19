@@ -2,6 +2,7 @@
 #include "function.h"
 #include "joueurVJoueur.h"
 #include "joueurVComputer.h"
+#include "essai.h"
 
 int main(){
     printf("-----------TicTacToe-----------\n");
@@ -29,8 +30,7 @@ int main(){
         initJvC();
     } else if (rep == 3){
         printf("Mode ordinateur contre ordinateur sélectionné\n");
-        printf("Entrez le nombre de simulation que vous souhaitez");
-        scanf("%d",&rep);
+        initi();
     } else {
         readGame();
     }
